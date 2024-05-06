@@ -1,4 +1,3 @@
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import math
@@ -65,6 +64,8 @@ def generate_and_plot_cauchy_combined(sample_size, title, number):
     plt.plot(np.linspace(min_value_floor, max_value_ceil, 1000), pdf, label='PDF', linestyle='dashed', color='orange')
     plt.suptitle(title, fontsize=16)
 
+    if sample_size == 1000 or sample_size == 50:
+        plt.yscale('log')
 def print_characteristics(N: list) -> None:
     methods = [
         lambda n: np.random.normal(0.0, 1.0, n),
@@ -102,39 +103,44 @@ def print_characteristics(N: list) -> None:
             print(f"{names[i]} n = {n}")
             display(df)
 
+
+
 sample_sizes = [10, 50, 1000]
-print_characteristics(sample_sizes)
-'''
+#print_characteristics(sample_sizes)
+
+
+
+
 number = 1
 plt.figure(figsize=(15, 5))
 for size in sample_sizes:
-    generate_and_plot_normal_combined(size, 'Нормальное распределение', number)
+    generate_and_plot_normal_combined(size, '', number)
     number += 1
 plt.show()
 
 number = 1
 plt.figure(figsize=(15, 5))
 for size in sample_sizes:
-    generate_and_plot_student_combined(size, 'Распределение Стьюдента', number)
+    generate_and_plot_student_combined(size, '', number)
     number += 1
 plt.show()
 
 number = 1
 plt.figure(figsize=(15, 5))
 for size in sample_sizes:
-    generate_and_plot_poisson_combined(size, 'Распределение Пуассона (10)', number)
+    generate_and_plot_poisson_combined(size, '', number)
     number += 1
 plt.show()
 number = 1
 plt.figure(figsize=(15, 5))
 for size in sample_sizes:
-    generate_and_plot_uniform_combined(size, 'Равномерное распределение (-√3, √3)', number)
+    generate_and_plot_uniform_combined(size, '', number)
     number += 1
 plt.show()
 number = 1
 plt.figure(figsize=(15, 5))
 for size in sample_sizes:
-    generate_and_plot_cauchy_combined(size, 'Распределение Коши (0, 1)', number)
+    generate_and_plot_cauchy_combined(size, '', number)
     number += 1
 plt.show()
-'''
+
